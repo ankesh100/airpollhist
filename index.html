@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Risk Associated with Air Pollution</title>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+
+ </body>
+        <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+<div class="container">
+  <h2>Fill form and click submit for result.</h2>
+  <form  action="" method="post" role="form">
+    {{ form.csrf }}
+    <div class="form-group">
+      <label for="inp1">Number of monitoring days:</label>
+      <input type="text" class="form-control" id="inp1" name="inp1" placeholder="monitoring(days)?">
+
+      <label for="inp2">Average RSPM level(PM 2.5):</label>
+      <input type="text" class="form-control" id="inp2" name="inp2" placeholder="AVG_pm2.5(µg/m3)">
+
+      <label for="inp3">Percentage exceedance in 24 hours:</label>
+      <input type="text" class="form-control" id="inp3" name="inp3" placeholder="Exceedance_24h(%)?">
+
+
+      <label for="twitter">Twitter: (optional)</label>
+      <input type="text" class="form-control" id="twitter" name="twitter" placeholder="What's your Twitter handle?">
+      <label for="git">Github: (optional)</label>
+      <input type="git" class="form-control" id="git" name="git" placeholder="What's your Github handle?">
+    </div>
+    <button type="submit" class="btn btn-success">Submit!</button>
+  </form>
+ 
+  <br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+ 
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>...</strong>{{ message[1] }}
+                </div>
+            {% endif %}
+ 
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+ 
+</div>
+<br>            
+</div>
+</div>
+</body>
+</html>
